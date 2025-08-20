@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View, Image, TextInput } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
 import { style } from './styles';
 import Logo from "../../assets/logo.png";
 import { MaterialIcons } from '@expo/vector-icons'
 import { themas } from "../../global/themes"
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default function Login() {
   return (
@@ -42,7 +43,11 @@ export default function Login() {
         <TextInput />
       </View>
       <View style={style.boxBotton}>
+        <TouchableOpacity style={style.button}>
+          <Text style={style.textButton}>Entrar</Text>
+        </TouchableOpacity>
       </View>
+      <Text style={style.textBotton}>Não possui conta?<Text style={{color: themas.colors.primary}}> Crie uma!</Text></Text>
     </View>
   );
 }

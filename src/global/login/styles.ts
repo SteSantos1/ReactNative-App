@@ -23,11 +23,10 @@ export const style = StyleSheet.create({
         paddingHorizontal: 37
     },
     boxBotton: {
-        height: Dimensions.get('window').height / 5,
+        height: Dimensions.get('window').height / 3,
         width: '100%',
-        backgroundColor: 'blue'
-        //borderWidth: 1,
-        //borderRadius: 40
+        //backgroundColor: 'blue'
+        alignItems: 'center'
     },
     logo: {
         width: 80,
@@ -53,12 +52,45 @@ export const style = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 5,
         backgroundColor: themas.colors.lightGray,
-        borderColor: themas.colors.lightGray
+        borderColor: themas.colors.lightGray,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.29,
+        shadowRadius: 4.65,
+        elevation: 7,
     },
     input: {
         height: '100%',
         width: '90%',
         //backgroundColor: 'red'
         borderRadius: 40
-    }
+    },
+    button: {
+        width: 250,
+        height: 50,
+        backgroundColor: themas.colors.primary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 40,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.29,
+        shadowRadius: 4.65,
+        elevation: 7,
+    },
+    textButton: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: '#FFF',
+    
+    },
+    textBotton: {
+        fontSize: 16,
+    },
 })
