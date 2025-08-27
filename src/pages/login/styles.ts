@@ -1,46 +1,48 @@
-import { StyleSheet } from "react-native";
-import { Dimensions } from 'react-native';
-import { themas } from "../../global/themes";
+import { StyleSheet, Dimensions } from "react-native";
+import { themes } from "../../global/themes";
+
 
 export const style = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        //padding: 20
+        // padding: 20,
     },
     boxTop: {
-        height: Dimensions.get('window').height /3,
+        height: Dimensions.get('window').height/3,
         width: '100%',
-        //backgroundColor: 'red'
+        // backgroundColor: 'red',
         alignItems: 'center',
         justifyContent: 'center',
     },
     boxMid: {
-        height: Dimensions.get('window').height / 4,
+        height: Dimensions.get('window').height/4,
         width: '100%',
-        //backgroundColor: 'green'
-        paddingHorizontal: 37
+        // backgroundColor: 'green',
+        paddingHorizontal: 37,
     },
-    boxBotton: {
-        height: Dimensions.get('window').height / 3,
+    boxBottom: {
+        height: Dimensions.get('window').height/3,
         width: '100%',
-        //backgroundColor: 'blue'
-        alignItems: 'center'
+        // backgroundColor: 'blue',
+        alignItems: 'center',
+
     },
     logo: {
         width: 80,
-        height: 80
+        height: 80,
     },
     text: {
         fontWeight: 'bold',
         marginTop: 48,
-        fontSize: 18
+        fontSize: 18,
     },
     titleInput: {
         marginLeft: 5,
-        color: themas.colors.gray,
-        marginTop: 20
+        color: themes.colors.gray,
+        marginTop: 20,
+        
     },
     boxInput: {
         width: '100%',
@@ -51,31 +53,30 @@ export const style = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 5,
-        backgroundColor: themas.colors.lightGray,
-        borderColor: themas.colors.lightGray,
-        shadowColor: "#000",
-        shadowOffset: {
+        backgroundColor: themes.colors.lightGray,
+        borderColor: themes.colors.lightGray,
+                shadowOffset: {
             width: 0,
             height: 3,
         },
         shadowOpacity: 0.29,
         shadowRadius: 4.65,
         elevation: 7,
+        
     },
     input: {
         height: '100%',
         width: '90%',
-        //backgroundColor: 'red'
-        borderRadius: 40
+        borderRadius: 40,
     },
     button: {
         width: 250,
         height: 50,
-        backgroundColor: themas.colors.primary,
-        justifyContent: 'center',
         alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: themes.colors.primary,
         borderRadius: 40,
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 3,
@@ -86,11 +87,12 @@ export const style = StyleSheet.create({
     },
     textButton: {
         fontSize: 16,
+        color: '#fff',
         fontWeight: 'bold',
-        color: '#FFF',
-    
     },
-    textBotton: {
+    textBottom: {
         fontSize: 16,
-    },
+        
+    }
+
 })

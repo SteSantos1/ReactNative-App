@@ -1,6 +1,4 @@
-import { Colors } from "react-native/Libraries/NewAppScreen";
-
-export const themas = {
+export const themes = {
     colors: {
         primary: '#878af6',
         secondary: '#ffffff',
