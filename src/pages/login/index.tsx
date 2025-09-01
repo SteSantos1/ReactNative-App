@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { Text, View, Image, TextInput, TouchableOpacity, Alert, ActivityIndicator } from "react-native";
-import { style } from "./styles"
-import Logo from '../../assets/logo.png';
-import { MaterialIcons } from '@expo/vector-icons';
-import { themes } from "../../global/themes";
+
+import {
+    Text, View, Image, TextInput, TouchableOpacity,
+    Alert, ActivityIndicator
+} from "react-native";
+import { style } from "./styles";
+import Logo from "../../assets/logo.png";
+import { MaterialIcons } from '@expo/vector-icons'
+import { themes } from "../../global/themes"
 import { Input } from "../../componentes/input";
 
 export default function Login() {
@@ -14,25 +18,24 @@ export default function Login() {
     async function getLogin() {
         try {
             setLoading(true)
-            if(!email || !password) {
+            if (!email || !password) {
                 return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
             }
 
             setTimeout(() => {
-                if (email == 'nogaroto@gmail.com' && password == "12345678") {
+                if (email == 'leo@gmail.com' && password == '12345678') {
                     Alert.alert('Logado com sucesso!');
                 } else {
-                    Alert.alert('Usuário não encontrado');
+                    Alert.alert('Usuário não encontrado!');
                 }
-                setLoading(false);
+                setLoading(false)
             }, 3000)
         } catch (error) {
             console.log(error);
         }
     }
-
     return (
-        <View style={style.container}>
+        < View style={style.container} >
             <View style={style.boxTop}>
                 <Image
                     source={Logo}
@@ -42,8 +45,11 @@ export default function Login() {
                 <Text style={style.text}>Bem vindo de volta!</Text>
             </View>
             <View style={style.boxMid}>
-                <Input />
-                {/*<Text style={style.titleInput}>ENDEREÇO DE E-MAIL</Text>*/}
+                <Input 
+                title="ENDEREÇO E-MAIL"
+                />
+                {/* <Text style={style.titleInput}>ENDEREÇO DE E-MAIL</Text> */}
+
                 {/* <View style={style.boxInput}>
                     <TextInput
                         style={style.input}
@@ -51,11 +57,11 @@ export default function Login() {
                         onChangeText={setEmail}
                     />
                     <MaterialIcons
-                    name = "email"
-                    size = {20}
-                    color={themes.colors.gray}
+                        name="email"
+                        size={20}
+                        color={themas.colors.gray}
                     />
-                </View> 
+                </View>
                 <Text style={style.titleInput}>SENHA</Text>
                 <View style={style.boxInput}>
                     <TextInput
@@ -64,24 +70,22 @@ export default function Login() {
                         onChangeText={setPassword}
                     />
                     <MaterialIcons
-                    name = "remove-red-eye"
-                    size = {20}
-                    color={themes.colors.gray}
+                        name="remove-red-eye"
+                        size={20}
+                        color={themas.colors.gray}
                     />
-                </View>*/}
+                </View> */}
             </View>
             <View style={style.boxBottom}>
                 <TouchableOpacity style={style.button} onPress={() => getLogin()}>
                     {
-                        loading ? <ActivityIndicator
-                            color={'#fff'} 
-                            size={"small"}
-                        /> : <Text style={style.textButton}>Entrar</Text>
+                        loading ? <ActivityIndicator color={'#ffff'} size={"small"} /> :
+                            <Text style={style.textButton}>Entrar</Text>
                     }
                 </TouchableOpacity>
             </View>
-            <Text style={style.textBottom}>Não tem conta?
-            <Text style={{color: themes.colors.primary}}> Crie agora!</Text></Text>
-        </View>
+            <Text style={style.textButton}>Não tem conta?
+                <Text style={{ color: themes.colors.primary }}> Crie agora!</Text></Text>
+        </View >
     )
 }
