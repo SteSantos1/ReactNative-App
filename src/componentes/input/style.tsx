@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { themes } from "../../global/themes";
+import { themas } from "../../global/themas";
 
 export const style = StyleSheet.create({
 
@@ -12,8 +12,8 @@ export const style = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 5,
-        backgroundColor: themes.colors.lightGray,
-        borderColor: themes.colors.lightGray
+        backgroundColor: themas.colors.lightGray,
+        borderColor: themas.colors.lightGray
     },
     input: {
         height: '100%',
@@ -23,7 +23,13 @@ export const style = StyleSheet.create({
     },
     titleInput: {
         marginLeft: 5,
-        color: themes.colors.gray,
+        color: themas.colors.gray,
         marginTop: 20
     },
+    Icon: {
+        width: '100%'
+    },
+    Button: {
+        width: '10%'
+    }
 })
