@@ -1,9 +1,8 @@
 import React, { ForwardedRef, forwardRef, Fragment } from "react";
 import { View, Text, TextInput, TextInputProps, TouchableOpacity } from 'react-native';
 import { style } from "./style";
-// import { MaterialIcons } from '@expo/vector-icons'; -- Vou Tirar esse dps!
-import { themas } from "../../global/themas";
 import { FontAwesome, MaterialIcons, Octicons } from '@expo/vector-icons';
+import { themas } from "../../global/themas";
 
 type IconComponent = React.ComponentType<React.ComponentProps<typeof MaterialIcons>> |
     React.ComponentType<React.ComponentProps<typeof FontAwesome>> |
@@ -35,7 +34,7 @@ export const Input = forwardRef<TextInput, Props>((Props, ref: ForwardedRef<Text
 
     const calculateSizePaddingLeft = () => {
         if (IconLeft && IconRight) {
-            return 0
+            return 0;
         } else if (IconLeft || IconRight) {
             return 10;
         } else {
@@ -45,7 +44,7 @@ export const Input = forwardRef<TextInput, Props>((Props, ref: ForwardedRef<Text
 
     return (
         <Fragment>
-            <Text style={style.titleInput}>{title}</Text>
+            {title && <Text style={style.titleInput}>{title}</Text>}
             <View style={[style.boxInput, { paddingLeft: calculateSizePaddingLeft() }]}>
                 {IconLeft && IconLeftName && (
                     <TouchableOpacity onPress={onIconLeftPress} style={style.Button}>
@@ -60,7 +59,7 @@ export const Input = forwardRef<TextInput, Props>((Props, ref: ForwardedRef<Text
                     {...rest}
                 />
                 {IconRight && IconRightName && (
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={onIconRightPress} style={style.Button}>
                         <IconRight name={IconRightName as any} size={20} color={themas.colors.gray}
                             style={style.Icon} />
                     </TouchableOpacity>
@@ -69,3 +68,5 @@ export const Input = forwardRef<TextInput, Props>((Props, ref: ForwardedRef<Text
         </Fragment>
     )
 })
+
+export { themas };
