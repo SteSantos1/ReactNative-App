@@ -1,12 +1,18 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import List from "../pages/list";
 import User from "../pages/user";
+import CustomTabBar from "../componentes/CustomTabBar";
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomRoutes() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            screenOptions={{
+                headerShown: false
+            }}
+            tabBar={props => <CustomTabBar {...props} />}
+        >
             <Tab.Screen
                 name="List"
                 component={List}
@@ -15,6 +21,7 @@ export default function BottomRoutes() {
                 name="User"
                 component={User}
             />
+
         </Tab.Navigator>
     )
 }

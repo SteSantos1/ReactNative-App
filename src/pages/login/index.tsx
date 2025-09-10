@@ -15,7 +15,8 @@ import { useNavigation, NavigationProp } from '@react-navigation/native'
 export default function Login() {
 
     const navigation = useNavigation<NavigationProp<any>>();
-    const [email, setEmail] = useState('');
+
+    const [email, setEmail] = useState('a');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(true);
     const [loading, setLoading] = useState(false);
@@ -31,14 +32,6 @@ export default function Login() {
 
             console.log("Logado com sucesso! :)")
 
-            setTimeout(() => {
-                if (email == 'stephanie@gmail.com' && password == '12345678') {
-                    Alert.alert('Logado com sucesso!');
-                } else {
-                    Alert.alert('Usuário não encontrado!');
-                }
-                setLoading(false)
-            }, 3000)
         } catch (error) {
             console.log(error);
         }
