@@ -1,11 +1,25 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { style } from "./styles";
 
 export default ({state, navegation}: any) => {
     return (
         <Text>
-            Olá, Mundo!
+            <TouchableOpacity>
+                <Text>
+                    Esquerda
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Text>
+                    Centro
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <Text>
+                    Direita
+                </Text>
+            </TouchableOpacity>
         </Text>
     )
 }
