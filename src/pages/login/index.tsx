@@ -28,12 +28,14 @@ export default function Login() {
                 return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
             }
 
-            navigation.reset({routes: [{name: "BottomRoutes"}]})
+            navigation.reset({ routes: [{ name: "BottomRoutes" }] })
 
             console.log("Logado com sucesso! :)")
 
         } catch (error) {
             console.log(error);
+        } finally{
+            setLoading(false)
         }
     }
     return (
@@ -47,21 +49,21 @@ export default function Login() {
                 <Text style={style.text}>Bem vindo de volta!</Text>
             </View>
             <View style={style.boxMid}>
-                <Input 
-                value={email}
-                onChangeText={setEmail}
-                title="ENDEREÇO E-MAIL"
-                IconRight={MaterialIcons}
-                IconRightName="email"
+                <Input
+                    value={email}
+                    onChangeText={setEmail}
+                    title="ENDEREÇO E-MAIL"
+                    IconRight={MaterialIcons}
+                    IconRightName="email"
                 />
-                <Input 
-                value={password}
-                onChangeText={setPassword}
-                title="SENHA"
-                IconRight={Octicons}
-                IconRightName={showPassword ? "eye-closed" : "eye"} // Logica do olho aberto ao ver a senha
-                secureTextEntry={showPassword}
-                onIconRightPress={() => setShowPassword(!showPassword)}
+                <Input
+                    value={password}
+                    onChangeText={setPassword}
+                    title="SENHA"
+                    IconRight={Octicons}
+                    IconRightName={showPassword ? "eye-closed" : "eye"} // Logica do olho aberto ao ver a senha
+                    secureTextEntry={showPassword}
+                    onIconRightPress={() => setShowPassword(!showPassword)}
                 />
             </View>
             <View style={style.boxBotton}>
