@@ -1,10 +1,11 @@
 import React from "react";
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import { style } from "./styles";
-import { Input, themas } from "../../componentes/input";
+import { Input } from "../../componentes/input";
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ball } from "../../componentes/Ball";
 import { Flag } from "../../componentes/Flag";
+import { themas } from "../../global/themas";
 
 type PropCard = {
     item: number,
