@@ -2,14 +2,15 @@ import React, { createContext, useContext, useRef, useEffect } from "react";
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { Modalize } from "react-native-modalize";
-import { Input, themas } from "../componentes/input";
+import { Input } from "../componentes/input";
+import { themas } from "../global/themas";
 import { Flag } from "../componentes/Flag";
 
 export const AuthContextList: any = createContext({});
 
 const flags = [
     { caption: 'Urgente', color: themas.colors.red },
-    { caption: 'Opicional', color: themas.colors.blueLight }
+    { caption: 'Opcional', color: themas.colors.blueLight }
 ];
 
 export const AuthProviderList = (props: any): any => {
@@ -18,6 +19,9 @@ export const AuthProviderList = (props: any): any => {
     const onOpen = () => {
         modalizeRef?.current?.open();
 
+    }
+    const onClose = () => {
+        modalizeRef?.current?.close();
     }
 
     useEffect(() => {
@@ -31,6 +35,7 @@ export const AuthProviderList = (props: any): any => {
                     <Flag
                         caption={item.caption}
                         color={item.color}
+                        selected
                     />
                 </TouchableOpacity>
             ))
@@ -41,7 +46,7 @@ export const AuthProviderList = (props: any): any => {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => onClose()}>
                         <MaterialIcons
                             name="close"
                             size={30}
@@ -60,7 +65,7 @@ export const AuthProviderList = (props: any): any => {
                 </View>
                 <View style={styles.content}>
                     <Input
-                        title="Título"
+                        title="Titulo"
                         labelStyle={styles.label}
                     />
                     <Input
@@ -78,7 +83,7 @@ export const AuthProviderList = (props: any): any => {
                     />
                 </View>
                 <View style={styles.containerFlag}>
-                    <Text>Flags:</Text>
+                    <Text style={styles.label}>Flags:</Text>
                     <View style={styles.rowFlags}>
                         {_renderFlags()}
                     </View>

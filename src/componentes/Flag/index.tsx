@@ -4,13 +4,19 @@ import { style } from "./style";
 
 type Props = {
     caption: string,
-    color: string
+    color: string,
+    selected: boolean
 }
 
 export function Flag({ ...rest }: Props) {
     return (
-        <TouchableOpacity style={[style.container, {backgroundColor: rest?.color}]}>
-            <Text style={{color: '#FFF'}}>{rest.caption}</Text>
+        <TouchableOpacity style={[
+            style.container,
+            { backgroundColor: rest?.color },
+            rest?.selected && { borderWidth: 1 }
+        ]}
+        >
+            <Text style={{ color: '#FFF' }}>{rest.caption}</Text>
         </TouchableOpacity>
     )
 }
