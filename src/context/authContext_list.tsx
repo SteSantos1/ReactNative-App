@@ -1,8 +1,5 @@
 import React, { createContext, useContext, useRef, useEffect, useState } from "react";
-import {
-    Dimensions, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity,
-    View
-} from "react-native";
+import {Alert, Dimensions, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { Modalize } from "react-native-modalize";
 import { Input } from "../componentes/input";
@@ -64,21 +61,30 @@ export const AuthProviderList = (props: any): any => {
         setSelectedTime(date);
     }
 
-    const handleSave = () => {
-        const newItem = {
-            item: Date.now(),
-            title,
-            description,
-            flags: selectedFlag,
-            timeLimite: new Date(
-                selectedDate.getFullYear(),
-                selectedDate.getMonth(),
-                selectedDate.getDate(),
-                selectedTime.getHours(),
-                selectedTime.getMinutes()
-            ).toISOString(),
+    const handleSave = async () => {
+        if (!title || !description || !selectedFlag) {
+            return Alert.alert('Atenção', 'Preencha os campos corretamente!');
         }
-        console.log(newItem)
+        try {
+            const newItem = {
+                item: Date.now(),
+                title,
+                description,
+                flags: selectedFlag,
+                timeLimite: new Date(
+                    selectedDate.getFullYear(),
+                    selectedDate.getMonth(),
+                    selectedDate.getDate(),
+                    selectedTime.getHours(),
+                    selectedTime.getMinutes()
+                ).toISOString(),
+            }
+
+            await AsyncStorage.setItem('tasklist', JSON.stringify(newItem))
+
+        } catch (error) {
+            console.log("Erro ao salvar o item", error)
+        }
 
     }
 
