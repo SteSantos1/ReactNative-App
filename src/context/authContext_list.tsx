@@ -1,11 +1,15 @@
 import React, { createContext, useContext, useRef, useEffect, useState } from "react";
-import { Dimensions, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+    Dimensions, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity,
+    View
+} from "react-native";
 import { MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { Modalize } from "react-native-modalize";
 import { Input } from "../componentes/input";
 import { themas } from "../global/themas";
 import { Flag } from "../componentes/Flag";
 import CustomDateTimePicker from "../componentes/CustomDateTimePicker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AuthContextList: any = createContext({});
 
@@ -20,11 +24,12 @@ export const AuthProviderList = (props: any): any => {
     const modalizeRef = useRef<Modalize>(null);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [selectedFlag, setSelected] = useState('Urgente');
+    const [selectedFlag, setSelectedFlag] = useState('Urgente');
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedTime, setSelectedTime] = useState(new Date());
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
+    const [item, setItem] = useState(0);
 
 
     const onOpen = () => {
@@ -35,18 +40,18 @@ export const AuthProviderList = (props: any): any => {
         modalizeRef?.current?.close();
     }
 
-    useEffect(() => {
-        onOpen()
-    }, [])
-
     const _renderFlags = () => {
         return (
             flags.map((item, index) => (
-                <TouchableOpacity key={index}>
+                <TouchableOpacity key={index}
+                    onPress={() => {
+                        setSelectedFlag(item.caption)
+                    }}
+                >
                     <Flag
                         caption={item.caption}
                         color={item.color}
-                    //selected
+                        selected={item.caption == selectedFlag}
                     />
                 </TouchableOpacity>
             ))
@@ -56,8 +61,28 @@ export const AuthProviderList = (props: any): any => {
         setSelectedDate(date);
     }
     const handleTimeChange = (date) => {
-        setSelected(date);
+        setSelectedTime(date);
     }
+
+    const handleSave = () => {
+        const newItem = {
+            item: Date.now(),
+            title,
+            description,
+            flags: selectedFlag,
+            timeLimite: new Date(
+                selectedDate.getFullYear(),
+                selectedDate.getMonth(),
+                selectedDate.getDate(),
+                selectedTime.getHours(),
+                selectedTime.getMinutes()
+            ).toISOString(),
+        }
+        console.log(newItem)
+
+    }
+
+
     const _container = () => {
         return (
             <KeyboardAvoidingView
@@ -75,7 +100,7 @@ export const AuthProviderList = (props: any): any => {
 
                     <Text style={styles.title}>Criar Tarefa</Text>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleSave()}>
                         <AntDesign
                             name="check"
                             size={30}
