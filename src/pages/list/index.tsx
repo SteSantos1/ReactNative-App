@@ -7,30 +7,29 @@ import { Ball } from "../../componentes/Ball";
 import { Flag } from "../../componentes/Flag";
 import { themas } from "../../global/themas";
 import { AuthContextList } from "../../context/authContext_list";
-
-type PropCard = {
-    item: number,
-    title: string,
-    description: string,
-    flag: 'urgente' | 'opcional'
-}
+import { formatDateToBR } from "../../global/functions";
+import { AuthContextType, PropCard } from "../../global/Props";
 
 export default function List() {
 
     const { taskList } = useContext<AuthContextType>(AuthContextList)
 
     const _renderCard = (item: PropCard) => {
+        const color = item.flag == 'Opcional' ? themas.colors.blueLight : themas.colors.red
         return (
             <TouchableOpacity style={style.card}>
                 <View style={style.rowCard}>
                     <View style={style.rowCardLeft}>
-                        <Ball color="red" />
+                        <Ball color={color} />
                         <View>
                             <Text style={style.titleCard}>{item.title}</Text>
                             <Text style={style.descriptionCard}>{item.description}</Text>
+                            <Text style={style.descriptionCard}>Até {formatDateToBR(item.timeLimit)}</Text>
                         </View>
                     </View>
-                    <Flag caption="Urgente" color={themas.colors.red} />
+                    <Flag 
+                    caption="Urgente" 
+                    color={color} />
                 </View>
             </TouchableOpacity>
         )
