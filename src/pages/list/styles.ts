@@ -66,4 +66,5 @@ export const style = StyleSheet.create({
         borderRadius: 10
     }
 
+
 })

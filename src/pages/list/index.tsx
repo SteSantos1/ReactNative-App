@@ -9,12 +9,13 @@ import { themas } from "../../global/themas";
 import { AuthContextList } from "../../context/authContext_list";
 import { formatDateToBR } from "../../global/functions";
 import { AuthContextType, PropCard } from "../../global/Props";
-import { Directions, Swipeable } from "react-native-gesture-handler"; 
+import { Directions, Swipeable } from "react-native-gesture-handler";
 
 export default function List() {
 
-    const { taskList, handleDelete } = useContext<AuthContextType>(AuthContextList)
+    const { taskList, handleDelete, handleEdit } = useContext<AuthContextType>(AuthContextList)
     const swipeableRefs = useRef([])
+
     const renderRightActions = () => (
         <View style={style.button}>
             <AntDesign
@@ -23,16 +24,17 @@ export default function List() {
                 color={'#FFF'}
             />
         </View>
-        )
-    };
+    );
 
     const handleSwipeOpen = (directions: 'right' | 'left', item, index) => {
         if (directions == 'right') {
             handleDelete(item)
-            swipeableRefs.current[index]?.close()
         } else {
-            //
+            handleEdit(item)
         }
+        swipeableRefs.current[index]?.close()
+    }
+
     const renderLeftActions = () => {
         return (
             <View style={[style.button, { backgroundColor: themas.colors.blueLight }]}>
@@ -65,10 +67,10 @@ export default function List() {
                                 <Text style={style.descriptionCard}>Até {formatDateToBR(item.timeLimit)}</Text>
                             </View>
                         </View>
-                    </View>
-                    <Flag
+                        <Flag
                             caption={item.flag}
                             color={color} />
+                    </View>
                 </View>
             </Swipeable>
         )
@@ -77,7 +79,7 @@ export default function List() {
         <View style={style.container}>
             <View style={style.header}>
                 <Text style={style.greeting}>Bom dia,
-                    <Text style={{ fontWeight: 'bold' }}> Stéphanie Santos!</Text></Text>
+                    <Text style={{ fontWeight: 'bold' }}> Leonardo Pires</Text></Text>
                 <View style={style.boxInput}>
                     <Input
                         IconLeft={MaterialIcons}
