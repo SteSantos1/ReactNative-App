@@ -8,7 +8,8 @@ export type PropCard = {
     flag: PropFlags,
     item:number,
     timeLimit: string,
-    title: string
+    title: string,
+    handleDelete: Function,
 }
 
 export type PropFlags = 'Urgente' | 'Opcional'
