@@ -79,7 +79,7 @@ export default function List() {
         <View style={style.container}>
             <View style={style.header}>
                 <Text style={style.greeting}>Bom dia,
-                    <Text style={{ fontWeight: 'bold' }}> Leonardo Pires</Text></Text>
+                    <Text style={{ fontWeight: 'bold' }}> Stéphanie Santos</Text></Text>
                 <View style={style.boxInput}>
                     <Input
                         IconLeft={MaterialIcons}

@@ -23,19 +23,24 @@ export default function Login() {
     const [loading, setLoading] = useState(false);
 
     async function getLogin() {
-        try {0
+        try {
+            0
             setLoading(true)
             if (!email || !password) {
                 return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
             }
 
-            navigation.reset({ routes: [{ name: "BottomRoutes" }] })
+            if (email === 'ste@gmail.com' && password == '220808') {
+                navigation.reset({ routes: [{ name: "BottomRoutes" }] })
+            } else {
+                Alert.alert('Atenção!', 'senha e/ou e-mail incorreto(s)')
+            }
 
             console.log("Logado com sucesso! :)")
 
         } catch (error) {
             console.log(error);
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
